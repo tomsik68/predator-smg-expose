@@ -32,3 +32,4 @@ function perform_build() {
 
 clone_predator
 perform_build
+echo -e "Initial build seems to be done. \nIf everything went ok, changing sources should now only require running 'make' from the build directory."
