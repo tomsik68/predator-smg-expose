@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # this build script relies on availability of llvm-config binary in $PATH
 llvm_config="$(which llvm-config)"
