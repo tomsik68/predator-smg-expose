@@ -8,6 +8,7 @@ predator_git="https://github.com/versokova/predator"
 predator_git_branch="master"
 
 function clone_predator(){
+  [ -d extern/ ] || mkdir extern/
   pushd extern/
   git clone "$predator_git"
   pushd predator/

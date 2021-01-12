@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.1..3.18)
 project(smgexpose C CXX)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -10,17 +10,14 @@ add_definitions(${LLVM_DEFINITIONS})
 llvm_map_components_to_libnames(LLVM_LIBS all)
 
 find_package(Predator REQUIRED)
+find_package(Passes REQUIRED)
 
-add_executable(smgexpose_test src/smgexpose_test.cpp src/PredatorInterface.cpp)
+add_executable(smgexpose_test src/PredatorInterface.cpp src/smgexpose_test.cpp)
 
-set_target_properties(smgexpose_test PROPERTIES
-    CXX_STANDARD 11
-    CXX_STANDARD_REQUIRED YES
-    CXX_EXTENSIONS NO
-    #LINK_FLAGS "-Wl,--entry=plugin_init"
-)
+target_compile_features(smgexpose_test PRIVATE cxx_std_14)
+set_target_properties(smgexpose_test PROPERTIES CXX_EXTENSIONS OFF)
+target_compile_options(smgexpose_test PRIVATE -Wall -Wextra -pedantic -fno-rtti -g)
 
-add_compile_options(-Wall -Wextra -pedantic)
-
-target_include_directories(smgexpose_test PRIVATE include/ ${PREDATOR_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS})
-target_link_libraries(smgexpose_test PRIVATE ${LLVM_LIBS} ${PREDATOR_LIBS})
+target_include_directories(smgexpose_test PRIVATE SYSTEM ${PASSES_INCLUDE_DIRS} ${PREDATOR_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS})
+target_include_directories(smgexpose_test PRIVATE include/)
+target_link_libraries(smgexpose_test PRIVATE ${LLVM_LIBS} ${PREDATOR_LIBS} ${PASSES_LIBS})

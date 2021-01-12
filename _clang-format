@@ -9,3 +9,6 @@ DerivePointerAlignment: false
 PointerAlignment: Right
 AllowShortFunctionsOnASingleLine: None
 IncludeBlocks: Regroup
+ColumnLimit: 80
+AllowAllArgumentsOnNextLine: true
+AllowAllConstructorInitializersOnNextLine: true

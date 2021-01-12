@@ -1,14 +1,22 @@
-#ifndef PREDATORINTERFACE_H
-#define PREDATORINTERFACE_H
+#pragma once
 
 #include <llvm/IR/Module.h>
 
+namespace smgexpose {
 namespace PredatorInterface {
 
-class AnalysisResults {};
+struct AnalysisProperties { /* TODO */
+};
 
+struct AnalysisResults {
+    AnalysisProperties props;
+    /* TODO */
+};
+
+/**
+ */
 AnalysisResults analyze(llvm::Module &module);
 
 } // namespace PredatorInterface
+} // namespace smgexpose
 
-#endif /* PREDATORINTERFACE_H */

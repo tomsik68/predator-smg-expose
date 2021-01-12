@@ -1,6 +1,6 @@
 set(PREDATOR_DIR "${CMAKE_SOURCE_DIR}/extern/predator" CACHE STRING "Path to Predator directory(cloned from github)")
 set(PREDATOR_LIBS "${PREDATOR_DIR}/cl_build/libclllvm.a" "${PREDATOR_DIR}/cl_build/libcl.a" "${PREDATOR_DIR}/sl_build/libpredator.a")
-set(PREDATOR_INCLUDE_DIRS "${PREDATOR_DIR}/include/" "${PREDATOR_DIR}/cl/llvm/")
+set(PREDATOR_INCLUDE_DIRS "${PREDATOR_DIR}/include/" "${PREDATOR_DIR}/cl/llvm/" "${PREDATOR_DIR}/sl/" "${PREDATOR_DIR}/cl/")
 
 set(FAILURE_REASON "Required files not found:")
 
